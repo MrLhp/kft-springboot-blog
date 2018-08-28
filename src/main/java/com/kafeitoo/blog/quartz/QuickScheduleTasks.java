@@ -13,11 +13,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * cron表达式结果预览
+ */
 @Slf4j
 @Component
 public class QuickScheduleTasks {
 
-    @Scheduled(cron = "0 0/1 * * * ?")
+    // @Scheduled(cron = "0 0/1 * * * ?")
     public void testCron() {
         log.info("{}", LocalDateTime.now());
     }
