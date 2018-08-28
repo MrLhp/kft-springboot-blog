@@ -1,4 +1,4 @@
-package com.kafeitoo.demo.common;
+package com.kafeitoo.blog.common;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;

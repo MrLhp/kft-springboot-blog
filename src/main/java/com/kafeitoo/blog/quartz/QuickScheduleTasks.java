@@ -1,4 +1,4 @@
-package com.kafeitoo.demo.quartz;
+package com.kafeitoo.blog.quartz;
 
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.TriggerUtils;
