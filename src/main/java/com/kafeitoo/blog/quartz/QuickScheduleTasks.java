@@ -20,11 +20,6 @@ import java.util.List;
 @Component
 public class QuickScheduleTasks {
 
-    // @Scheduled(cron = "0 0/1 * * * ?")
-    public void testCron() {
-        log.info("{}", LocalDateTime.now());
-    }
-
     public static void main(String[] args) throws InterruptedException, ParseException {
         CronTriggerImpl cronTriggerImpl = new CronTriggerImpl();
         cronTriggerImpl.setCronExpression("0 0/1 * * * ?");//这里写要准备猜测的cron表达式
