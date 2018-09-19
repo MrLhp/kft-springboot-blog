@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    jdbc-url: jdbc:mysql://118.24.70.66:3306/blog?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&autoReconnect=true
+    username: root
+    password: Haipei@2018
+    driver-class-name: com.mysql.cj.jdbc.Driver
