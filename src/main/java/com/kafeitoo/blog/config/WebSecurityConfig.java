@@ -36,11 +36,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(encodingFilter, CsrfFilter.class);
     }
 
-    // secret123
-    private static final String ENCODED_PASSWORD = "$2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2";
+    private static final String ENCODED_PASSWORD = "$2a$10$lYNnSe1SVT0E2d0S7gBnZOCGG74ulQjwpbtrzHKQ/mdyAy6YiB/.u";
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        //todo:配置用户登录
         //存储默认用户至内存
         auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder())
