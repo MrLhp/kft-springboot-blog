@@ -1,0 +1,4 @@
+1. 测试使用jpa @DynamicUpdate 是否会更新所有字段
+
+2. https://openhome.cc/Gossip/EJB3Gossip/EntityManager.html
+
