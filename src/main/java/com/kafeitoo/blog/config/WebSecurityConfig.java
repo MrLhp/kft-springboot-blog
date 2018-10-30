@@ -49,8 +49,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("USER");
     }
 
+    /**
+     * 设置用户密码加密方式
+     * @return
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
