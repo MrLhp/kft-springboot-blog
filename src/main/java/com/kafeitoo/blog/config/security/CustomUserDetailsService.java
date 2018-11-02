@@ -1,5 +1,6 @@
-package com.kafeitoo.blog.model.authentication;
+package com.kafeitoo.blog.config.security;
 
+import com.kafeitoo.blog.model.authentication.OperationUser;
 import com.kafeitoo.blog.repository.user.BaseUserRepository;
 import com.kafeitoo.blog.repository.user.OperationUserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -8,13 +9,14 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
  * 认证和授权
  */
 @Slf4j
-@Service
+@Component
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
@@ -27,8 +29,8 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("账号不存在");
         }
 
-        this.log.info("【 %s 】【 %s 】", operationUser.getNickName(), operationUser.getUserName());
+        this.log.info("【 {} 】【 {} 】", operationUser.getNickName(), operationUser.getUserName());
 
-        return null;
+        return User.withUsername(s).accountExpired(false).accountLocked(false).password(operationUser.getPassword()).roles("USER").build();
     }
 }
