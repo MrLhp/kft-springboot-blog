@@ -28,7 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (operationUser == null) {
             throw new UsernameNotFoundException("账号不存在");
         }
-
+        //todo 添加用户权限
         this.log.info("【 {} 】【 {} 】", operationUser.getNickName(), operationUser.getUserName());
 
         return User.withUsername(s).accountExpired(false).accountLocked(false).password(operationUser.getPassword()).roles("USER").build();
