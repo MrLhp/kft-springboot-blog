@@ -1,6 +1,5 @@
 package com.kafeitoo.blog.model.authentication;
 
-import com.kafeitoo.blog.common.AbstractAuditModel;
 import com.kafeitoo.blog.enums.UserType;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +14,12 @@ import java.util.Date;
 @Setter
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class BaseUser extends AbstractAuditModel {
+public class BaseUser  {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
 
     @NotBlank
     @Length(max = 50)
