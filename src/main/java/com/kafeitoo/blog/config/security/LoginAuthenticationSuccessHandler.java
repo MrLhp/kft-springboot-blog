@@ -40,6 +40,7 @@ public class LoginAuthenticationSuccessHandler extends SavedRequestAwareAuthenti
         map.put("list", authentication);
         response.getWriter().write(JSONUtil.toJsonStr(map));
 
-        super.getRedirectStrategy().sendRedirect(request, response, "/home");
+        // super.getRedirectStrategy().sendRedirect(request, response, "/home");
+        super.onAuthenticationSuccess(request,response,authentication);
     }
 }
