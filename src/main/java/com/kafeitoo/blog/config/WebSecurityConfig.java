@@ -4,8 +4,10 @@ import com.kafeitoo.blog.config.security.CustomUserDetailsService;
 import com.kafeitoo.blog.config.security.LoginAuthenticationFailHandler;
 import com.kafeitoo.blog.config.security.LoginAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -47,6 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(loginAuthenticationSuccessHandler)
                 .failureHandler(loginAuthenticationFailHandler)
                 .permitAll()
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and()
                 .logout()
                 .permitAll();
@@ -62,6 +65,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService());
+        //remember me
+        auth.eraseCredentials(false);
         //存储默认用户至内存
         // auth.inMemoryAuthentication()
         //         .passwordEncoder(passwordEncoder())

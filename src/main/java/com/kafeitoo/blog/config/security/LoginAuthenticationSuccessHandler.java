@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -35,12 +36,9 @@ public class LoginAuthenticationSuccessHandler extends SavedRequestAwareAuthenti
         log.info("当前登录用户【 {} 】【 {} 】，登录时间【 {} 】", ((UserBean) principal).getNickname(), username, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         //将 authention 信息打包成json格式返回
         //todo:添加实体类，添加登录成功跳转页面
-        response.setContentType("application/json;charset=UTF-8");
-        Map<String, Object> map = new HashMap<>(1);
-        map.put("list", authentication);
-        response.getWriter().write(JSONUtil.toJsonStr(map));
-
-        // super.getRedirectStrategy().sendRedirect(request, response, "/home");
+        HttpSession session = request.getSession();
+        session.setAttribute("userName",((UserBean) principal).getNickname());
+        // super.getRedirectStrategy().sendRedirect(request, response, "");
         super.onAuthenticationSuccess(request,response,authentication);
     }
 }
